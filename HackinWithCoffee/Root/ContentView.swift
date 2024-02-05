@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var menu = Menu()
     var body: some View {
         VStack {
             Image(systemName: "globe")

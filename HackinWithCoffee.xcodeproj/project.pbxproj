@@ -15,6 +15,7 @@
 		707C168F2B714666000D9B4B /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C168E2B714666000D9B4B /* Drink.swift */; };
 		707C16932B7147DE000D9B4B /* MenuSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C16922B7147DE000D9B4B /* MenuSection.swift */; };
 		707C16952B714913000D9B4B /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C16942B714913000D9B4B /* Menu.swift */; };
+		707C16972B714D47000D9B4B /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C16962B714D47000D9B4B /* MenuView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		707C168E2B714666000D9B4B /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
 		707C16922B7147DE000D9B4B /* MenuSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSection.swift; sourceTree = "<group>"; };
 		707C16942B714913000D9B4B /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		707C16962B714D47000D9B4B /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				707C168C2B71452A000D9B4B /* Root */,
 				707C16892B7144C1000D9B4B /* Supporting files */,
 				707C16812B7143E2000D9B4B /* Preview Content */,
+				707C16962B714D47000D9B4B /* MenuView.swift */,
 			);
 			path = HackinWithCoffee;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				707C167E2B7143E1000D9B4B /* ContentView.swift in Sources */,
+				707C16972B714D47000D9B4B /* MenuView.swift in Sources */,
 				707C168F2B714666000D9B4B /* Drink.swift in Sources */,
 				707C16932B7147DE000D9B4B /* MenuSection.swift in Sources */,
 				707C167C2B7143E1000D9B4B /* HackinWithCoffeeApp.swift in Sources */,
