@@ -11,4 +11,7 @@ struct Drink: Identifiable, Codable {
     let id: UUID
     let name: String
     
+    var image: String {
+        name.lowercased().replacingOccurrences(of: " ", with: "-")
+    }
 }
