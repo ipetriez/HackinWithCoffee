@@ -8,13 +8,35 @@
 import SwiftUI
 
 struct CustomizeView: View {
+    @EnvironmentObject var menu: Menu
     @State private var size = 0
     @State private var isDecaf = false
+    @State private var extraShots = 0
+    @State private var milk = ConfigurationOption.none
+    @State private var syrup = ConfigurationOption.none
     
     private let drink: Drink
     private let sizeOptions = ["Small", "Medium", "Large"]
-    private var caffeine: Int { 100 }
-    private var calories: Int { 100 }
+    private var caffeine: Int {
+        var caffeineAmount = drink.caffeine[size]
+        caffeineAmount += (extraShots * 60)
+        if isDecaf {
+            caffeineAmount /= 20
+        }
+        return caffeineAmount
+    }
+    
+    private var calories: Int {
+        var caloriesAmount = drink.baseCalories
+        caloriesAmount += (extraShots * 10)
+        if drink.coffeeBased {
+            caloriesAmount += milk.calories
+        } else {
+            caloriesAmount += milk.calories / 8
+        }
+        caloriesAmount += syrup.calories
+        return caloriesAmount * (size + 1)
+    }
     
     init(drink: Drink) {
         self.drink = drink
@@ -30,7 +52,29 @@ struct CustomizeView: View {
                 }
                 .pickerStyle(.segmented)
                 
+                if drink.coffeeBased {
+                    Stepper("Extra shots: \(extraShots)", value: $extraShots, in: 0...8)
+                }
+                
                 Toggle("Decaffeinated", isOn: $isDecaf)
+            }
+            
+            Section("Customizations") {
+                Picker("Milk", selection: $milk) {
+                    ForEach(menu.milkOptions) { option in
+                        Text(option.name)
+                            .tag(option)
+                    }
+                }
+                
+                if drink.coffeeBased {
+                    Picker("Syrup", selection: $syrup) {
+                        ForEach(menu.syrupOptions) { option in
+                            Text(option.name)
+                                .tag(option)
+                        }
+                    }
+                }
             }
             
             Section("Estimates") {
@@ -45,4 +89,5 @@ struct CustomizeView: View {
 
 #Preview {
     CustomizeView(drink: DeveloperPreview.mock.drink)
+        .environmentObject(Menu())
 }
