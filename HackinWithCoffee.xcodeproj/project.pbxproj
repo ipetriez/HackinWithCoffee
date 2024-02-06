@@ -19,6 +19,9 @@
 		707C16992B725BA7000D9B4B /* CustomizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C16982B725BA7000D9B4B /* CustomizeView.swift */; };
 		707C169B2B725C59000D9B4B /* DeveloperPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C169A2B725C59000D9B4B /* DeveloperPreview.swift */; };
 		707C169E2B7277DD000D9B4B /* ConfigurationOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C169D2B7277DD000D9B4B /* ConfigurationOption.swift */; };
+		707C16A02B72820B000D9B4B /* Serving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C169F2B72820B000D9B4B /* Serving.swift */; };
+		707C16A52B728327000D9B4B /* FileManager-DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C16A42B728327000D9B4B /* FileManager-DocumentsDirectory.swift */; };
+		707C16A72B7283A5000D9B4B /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C16A62B7283A5000D9B4B /* History.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +38,9 @@
 		707C16982B725BA7000D9B4B /* CustomizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeView.swift; sourceTree = "<group>"; };
 		707C169A2B725C59000D9B4B /* DeveloperPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperPreview.swift; sourceTree = "<group>"; };
 		707C169D2B7277DD000D9B4B /* ConfigurationOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationOption.swift; sourceTree = "<group>"; };
+		707C169F2B72820B000D9B4B /* Serving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serving.swift; sourceTree = "<group>"; };
+		707C16A42B728327000D9B4B /* FileManager-DocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-DocumentsDirectory.swift"; sourceTree = "<group>"; };
+		707C16A62B7283A5000D9B4B /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +77,7 @@
 				707C168C2B71452A000D9B4B /* Root */,
 				707C16892B7144C1000D9B4B /* Supporting files */,
 				707C169C2B7268A4000D9B4B /* Utility */,
+				707C16A12B7282F1000D9B4B /* Extensions */,
 				707C16812B7143E2000D9B4B /* Preview Content */,
 				707C16962B714D47000D9B4B /* MenuView.swift */,
 				707C16982B725BA7000D9B4B /* CustomizeView.swift */,
@@ -108,9 +115,11 @@
 			isa = PBXGroup;
 			children = (
 				707C168E2B714666000D9B4B /* Drink.swift */,
+				707C169F2B72820B000D9B4B /* Serving.swift */,
 				707C169D2B7277DD000D9B4B /* ConfigurationOption.swift */,
 				707C16922B7147DE000D9B4B /* MenuSection.swift */,
 				707C16942B714913000D9B4B /* Menu.swift */,
+				707C16A62B7283A5000D9B4B /* History.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -121,6 +130,14 @@
 				707C169A2B725C59000D9B4B /* DeveloperPreview.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		707C16A12B7282F1000D9B4B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				707C16A42B728327000D9B4B /* FileManager-DocumentsDirectory.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,11 +212,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				707C167E2B7143E1000D9B4B /* ContentView.swift in Sources */,
+				707C16A52B728327000D9B4B /* FileManager-DocumentsDirectory.swift in Sources */,
 				707C169B2B725C59000D9B4B /* DeveloperPreview.swift in Sources */,
 				707C16972B714D47000D9B4B /* MenuView.swift in Sources */,
 				707C168F2B714666000D9B4B /* Drink.swift in Sources */,
 				707C16932B7147DE000D9B4B /* MenuSection.swift in Sources */,
+				707C16A72B7283A5000D9B4B /* History.swift in Sources */,
 				707C167C2B7143E1000D9B4B /* HackinWithCoffeeApp.swift in Sources */,
+				707C16A02B72820B000D9B4B /* Serving.swift in Sources */,
 				707C16992B725BA7000D9B4B /* CustomizeView.swift in Sources */,
 				707C169E2B7277DD000D9B4B /* ConfigurationOption.swift in Sources */,
 				707C16952B714913000D9B4B /* Menu.swift in Sources */,

@@ -1,0 +1,60 @@
+//
+//  History.swift
+//  HackinWithCoffee
+//
+//  Created by Sergey Petrosyan on 06.02.24.
+//
+
+import Foundation
+
+final class History: ObservableObject {
+    @Published var servings: [Serving]
+    let savePath = FileManager.documentsDirectory.appendingPathComponent("SavedDrinks")
+    
+    init() {
+        do {
+            let data = try Data(contentsOf: savePath)
+            servings = try JSONDecoder().decode([Serving].self, from: data)
+        } catch {
+            print("DEBUG: Couldn't decode servings from documentsDirectory with the error: \(error)")
+            servings = []
+        }
+    }
+    
+    func save() {
+        do {
+            let data = try JSONEncoder().encode(servings)
+            try data.write(to: savePath, options: [.atomic, .completeFileProtection])
+        } catch {
+            print("DEBUG: Couldn't save servings to documentsDirectory with the error: \(error)")
+        }
+    }
+    
+    func add(_ drink: Drink, size: String, extraShots: Int, isDecaf: Bool, milk: ConfigurationOption, syrup: ConfigurationOption, caffeine: Int, calories: Int) {
+        var description = [String]()
+        description.append(size)
+        if isDecaf { description.append("decaffeinated") }
+        
+        switch extraShots {
+        case 0:
+            break
+        case 1:
+            description.append("1 extra shot")
+        default:
+            description.append("\(extraShots) extra shots")
+        }
+        
+        if milk != .none {
+            description.append("\(milk.name.lowercased()) milk")
+        }
+        
+        if syrup != .none {
+            description.append("\(syrup.name.lowercased()) syrup")
+        }
+        
+        let descriptionString = description.joined(separator: ", ")
+        let serving = Serving(id: UUID(), name: drink.name, description: descriptionString, caffeine: caffeine, calories: calories)
+        servings.insert(serving, at: 0)
+        save()
+    }
+}

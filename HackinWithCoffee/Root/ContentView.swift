@@ -9,9 +9,12 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var menu = Menu()
+    @StateObject private var history = History()
+    
     var body: some View {
         MenuView()
             .environmentObject(menu)
+            .environmentObject(history)
     }
 }
 
