@@ -13,5 +13,6 @@ final class DeveloperPreview {
     
     private init() { }
     
-    let drink = Drink(id: UUID(), name: "English tea")
+    let drink = Drink(id: UUID(), name: "English tea", caffeine: [60, 120, 200], coffeeBased: true, servedWithMilk: true, baseCalories: 100)
+    let configurationOption = ConfigurationOption(id: UUID(), name: "None", calories: 0)
 }
