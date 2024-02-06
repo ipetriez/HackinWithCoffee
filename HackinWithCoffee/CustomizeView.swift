@@ -38,6 +38,8 @@ struct CustomizeView: View {
                 Text("**Calories** \(calories)")
             }
         }
+        .navigationTitle(drink.name)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
