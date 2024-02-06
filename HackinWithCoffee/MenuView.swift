@@ -14,15 +14,22 @@ struct MenuView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                LazyVGrid(columns: columns) {
+                LazyVGrid(columns: columns, pinnedViews: .sectionHeaders) {
                     ForEach(menu.sections) { section in
                         Section {
                             ForEach(section.drinks) { drink in
                                 VStack {
                                     Text(drink.name)
+                                        .font(.system(.body, design: .serif))
                                 }
                                 .padding(.bottom)
                             }
+                        } header: {
+                            Text(section.name)
+                                .font(.system(.title, design: .serif))
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding([.top, .bottom, .trailing], 5)
+                                .background(.background)
                         }
                     }
                 }
