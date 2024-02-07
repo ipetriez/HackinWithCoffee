@@ -46,6 +46,24 @@ struct HomeView: View {
                             Spacer()
                             Text("\(serving.caffeine)mg")
                         }
+                        .swipeActions {
+                            Button(role: .destructive) {
+                                withAnimation {
+                                    history.delete(serving)
+                                }
+                            } label: {
+                                Label("Delete", systemImage: "trash")
+                            }
+                            
+                            Button {
+                                withAnimation {
+                                    history.reorder(serving)
+                                }
+                            } label: {
+                                Label("Repeat", systemImage: "repeat")
+                            }
+                            .tint(.blue)
+                        }
                     }
                 }
             }

@@ -57,4 +57,18 @@ final class History: ObservableObject {
         servings.insert(serving, at: 0)
         save()
     }
+    
+    func reorder(_ serving: Serving) {
+        var copy = serving
+        copy.id = UUID()
+        servings.insert(copy, at: 0)
+        save()
+    }
+    
+    func delete(_ serving: Serving) {
+        if let index = servings.firstIndex(of: serving) {
+            servings.remove(at: index)
+            save()
+        }
+    }
 }
