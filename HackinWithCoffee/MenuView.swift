@@ -10,6 +10,7 @@ import SwiftUI
 struct MenuView: View {
     @EnvironmentObject var menu: Menu
     @Environment(\.dismiss) var dismiss
+    @State private var searchText = ""
     let columns = [GridItem(.adaptive(minimum: 150))]
     
     var body: some View {
@@ -18,7 +19,7 @@ struct MenuView: View {
                 LazyVGrid(columns: columns, pinnedViews: .sectionHeaders) {
                     ForEach(menu.sections) { section in
                         Section {
-                            ForEach(section.drinks) { drink in
+                            ForEach(section.matches(for: searchText)) { drink in
                                 NavigationLink {
                                     CustomizeView(drink: drink) {
                                         dismiss()
@@ -49,6 +50,7 @@ struct MenuView: View {
                 .padding(.horizontal)
             }
             .navigationTitle("Add Drink")
+            .searchable(text: $searchText)
         }
     }
 }
