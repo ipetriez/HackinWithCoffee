@@ -12,6 +12,14 @@ struct HomeView: View {
     @StateObject private var history = History()
     @State private var showingAddScreen = false
     
+    var totalCaffeine: Int {
+        history.servings.map(\.caffeine).reduce(0, +)
+    }
+    
+    var totalCalories: Int {
+        history.servings.map(\.calories).reduce(0, +)
+    }
+    
     var body: some View {
         NavigationStack {
             List {
@@ -20,6 +28,12 @@ struct HomeView: View {
                         showingAddScreen = true
                     }
                 } else {
+                    
+                    Section("Summary") {
+                        Text("Total caffeine: \(totalCaffeine)mg")
+                        Text("Total calories: \(totalCalories)")
+                    }
+                    
                     ForEach(history.servings) { serving in
                         HStack {
                             VStack(alignment: .leading) {
