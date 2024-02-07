@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CustomizeView: View {
     @EnvironmentObject var menu: Menu
+    @EnvironmentObject var history: History
+    
     @State private var size = 0
     @State private var isDecaf = false
     @State private var extraShots = 0
@@ -17,6 +19,7 @@ struct CustomizeView: View {
     
     private let drink: Drink
     private let sizeOptions = ["Small", "Medium", "Large"]
+    private let dismiss: () -> Void
     private var caffeine: Int {
         var caffeineAmount = drink.caffeine[size]
         caffeineAmount += (extraShots * 60)
@@ -38,8 +41,9 @@ struct CustomizeView: View {
         return caloriesAmount * (size + 1)
     }
     
-    init(drink: Drink) {
+    init(drink: Drink, dismiss: @escaping () -> Void) {
         self.drink = drink
+        self.dismiss = dismiss
     }
     
     var body: some View {
@@ -84,10 +88,16 @@ struct CustomizeView: View {
         }
         .navigationTitle(drink.name)
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            Button("Save") {
+                history.add(drink, size: sizeOptions[size], extraShots: extraShots, isDecaf: isDecaf, milk: milk, syrup: syrup, caffeine: caffeine, calories: calories)
+                dismiss()
+            }
+        }
     }
 }
 
 #Preview {
-    CustomizeView(drink: DeveloperPreview.mock.drink)
+    CustomizeView(drink: DeveloperPreview.mock.drink) { }
         .environmentObject(Menu())
 }
